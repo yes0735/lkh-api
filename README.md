@@ -5,11 +5,11 @@ docker compose up --build -d
 
 
 ## API 문서
-> Swagger [http://localhost:8000/docs]
+- [Local Swagger](http://localhost:8000/docs)
 
 
 ## sample data DB 등록
-- Swagger API /import-csv 호출
+- [Local Swagger API /import-csv](http://localhost:8000/docs#/COMPANY/post_import_csv_import_csv_post)
 
 
 ## 테스트 코드 실행
