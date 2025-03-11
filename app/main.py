@@ -1,5 +1,7 @@
 from fastapi import FastAPI
 from app.company.router import router as company_router
+from app.database import init_db, wait_for_db
+
 
 
 def create_app() -> FastAPI:
@@ -15,6 +17,12 @@ def create_app() -> FastAPI:
 
 app = create_app()
 
+
+# 앱 시작 시 데이터베이스 초기화
+@app.on_event("startup")
+async def startup():
+    wait_for_db()
+    init_db()
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host='0.0.0.0', port=8000, reload=True)

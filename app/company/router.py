@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException, Header
 from sqlalchemy.orm import Session
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.sql import func
-from app.database import init_db, get_db
+from app.database import get_db
 from . import schemas
 from . import crud
 from app.company import service
@@ -14,9 +14,6 @@ from sqlalchemy import desc
 
 # APIRouter 인스턴스 생성
 router = APIRouter()
-
-# 데이터베이스 초기화
-init_db()
 
 
 @router.get("/search", response_model=List[schemas.CompanyName])
