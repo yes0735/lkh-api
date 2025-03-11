@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+pydantic
+mysql-connector-python
+sqlalchemy
+aiomysql
+pytz
+cryptography
+requests
+pytest
+pytest-asyncio
+httpx

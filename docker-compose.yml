@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  app:
+    build: .  # Dockerfile을 사용하여 이미지 빌드
+    container_name: lkh_api_app
+    depends_on:
+      - db  # MySQL 컨테이너가 먼저 실행되도록 설정
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=mysql+pymysql://root:leekh123!@db:3306/work
+    volumes:
+      - .:/app
+
+  db:
+    image: mysql:8.0
+    container_name: mysql_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: leekh123!
+      MYSQL_DATABASE: work
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    command: --sql-mode="STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION"
+
+volumes:
+  mysql_data:
